@@ -13,3 +13,19 @@ Testing
 
 Deployment
   - Meteor Up (mup) to keep track of multiple deployment environments
+
+Sögur
+  - Bóka færslu:
+    + einn eða fleiri reikningar í hverri færslu
+    + heildarupphæð 0, þ.e. debet = kredit
+    + ein athugasemd fyrir færsluna og ein fyrir hvern reikning
+    + dagsetning bókunar
+    + skráningardagur - auto
+    + id bókara - auto
+    + fylgiskjalsnúmer - auto
+  - Yfirlit reiknings:
+    + sýnir allar færslur á reikning í röð eftir dagsetningu bókunar
+
+Stillingar
+  - Reikningar fyrir eignir, skuldir, gjöld og tekjur
+  
