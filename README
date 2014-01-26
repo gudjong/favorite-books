@@ -1,0 +1,15 @@
+Development on OS X Mavericks:
+  - Install Meteor from https://www.meteor.com.
+      $ curl https://install.meteor.com | sh
+  - Install node.js from http://www.nodejs.org.
+      Download and install package for OS X.
+  - Install Meteorite
+      $ sudo -H npm install -g meteorite
+
+Testing
+  - http://xolvio.github.io/rtd/ for local real time end-to-end and unit tests
+  - jasmine for unit tests
+  - Selenium webDriver / cucumber.js for end-to-end tests
+
+Deployment
+  - Meteor Up (mup) to keep track of multiple deployment environments
