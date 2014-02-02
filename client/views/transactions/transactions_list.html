@@ -1,7 +1,14 @@
 <template name="transactionsList">
     <div id="transactions-list">
-        {{#each transactions}}
-            {{> transaction}}
-        {{/each}}
+        <table class="table">
+            <thead>
+                {{> transactionsHeader}}
+            </thead>
+            <tbody>
+                {{#each transactions}}
+                    {{> transaction}}
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 </template>

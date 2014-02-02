@@ -1,31 +1,36 @@
+@header-height: 30px;
+
 *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.container {
+  background: lightgrey;
 }
 
 #header {
   background: darken(red, 10%);
-  height: 30px;
+  height: @header-height;
   left: 0px;
   position: absolute;
   right: 0;
   top: 0;
-  //  z-index: 101;
 }
 
 #header-title {
   color: white;
-  font-family: helvetica, sans-serif;
-//  font-size: 16px;
-  height: 100%;
-//  margin-left: 15px;
-//  margin-top: 5px;
-  padding: 5px 0 0 10px;
+  font-size: 16px;
+  padding: 3px 0 0 10px;
 }
 
 #content {
-  position: absolute;
-  top: 30px;
+  left: 0px;
   padding: 5px;
+  position: absolute;
+  right: 0;
+  top: @header-height;
 }
 
 //@media only screen and (min-width:960px){

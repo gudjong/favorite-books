@@ -1,5 +1,16 @@
 <template name="transaction">
-    <div id="transaction">
-        <a>{{description}}</a>
-    </div>
+    {{#each recordsWithFirstFlag}}
+        <tr>
+            {{#if _first}}
+                <td rowspan={{recordsCount ../../records}}>{{../../transactionNumber}}</td>
+                <td rowspan={{recordsCount ../../records}}>{{../../registrationTime}}</td>
+                <td rowspan={{recordsCount ../../records}}>{{../../transactionDate}}</td>
+                <td rowspan={{recordsCount ../../records}}>{{../../description}}</td>
+            {{/if}}
+            <td>{{account}}</td>
+            <td>{{debit}}</td>
+            <td>{{kredit}}</td>
+            <td>{{description}}</td>
+        </tr>
+    {{/each}}
 </template>
