@@ -1,10 +1,9 @@
 console.log(Transactions.findOne());
 if (Transactions.find().count() === 0) {
-    console.log('no transactions');
     Transactions.insert({
         transactionNumber: 1,
         registrationTime: new Date().getTime(),
-        transactionDate: new Date().getDate(),
+        transactionDate: new Date(2014, 0, 30).getTime(),
         description: 'Millifærsla',
         records: [
             {
@@ -22,7 +21,7 @@ if (Transactions.find().count() === 0) {
     Transactions.insert({
         transactionNumber: 1,
         registrationTime: new Date().getTime(),
-        transactionDate: new Date().getDate(),
+        transactionDate: new Date(2014, 1, 3).getTime(),
         description: 'Millifærsla',
         records: [
             {

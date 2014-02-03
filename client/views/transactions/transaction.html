@@ -4,7 +4,7 @@
             {{#if _first}}
                 <td rowspan={{recordsCount ../../records}}>{{../../transactionNumber}}</td>
                 <td rowspan={{recordsCount ../../records}}>{{../../registrationTime}}</td>
-                <td rowspan={{recordsCount ../../records}}>{{../../transactionDate}}</td>
+                <td rowspan={{recordsCount ../../records}}>{{transactionDateToText ../../transactionDate}}</td>
                 <td rowspan={{recordsCount ../../records}}>{{../../description}}</td>
             {{/if}}
             <td>{{account}}</td>

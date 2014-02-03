@@ -6,8 +6,20 @@
   box-sizing: border-box;
 }
 
+// Mixin itself
+//.clear-fix() {
+//  &:before,
+//  &:after {
+//    content: " ";
+//    display: table;
+//  }
+//  &:after {
+//    clear: both;
+//  }
+//}
+
 .container {
-  background: lightgrey;
+//  background: lightgrey;
 }
 
 #header {
@@ -31,6 +43,10 @@
   position: absolute;
   right: 0;
   top: @header-height;
+}
+
+#spinner {
+  padding: @header-height;
 }
 
 //@media only screen and (min-width:960px){

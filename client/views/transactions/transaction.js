@@ -8,8 +8,13 @@ Template.transaction.helpers({
         });
         return recordsWithFirstFlag;
     },
+
     recordsCount: function(records) {
-        console.log("count", records.length);
         return records.length
+    },
+
+    transactionDateToText: function(transactionDate) {
+        var d = new Date(transactionDate);
+        return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
     }
 });
