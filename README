@@ -15,6 +15,8 @@ Deployment
   - Meteor Up (mup) to keep track of multiple deployment environments
 
 Sögur
+  - Yfirlit bókaðra færslna:
+    + sýnir allar færslur í röð eftir dagsetningu færslu
   - Bóka færslu:
     + einn eða fleiri reikningar í hverri færslu
     + heildarupphæð 0, þ.e. debet = kredit
@@ -24,7 +26,7 @@ Sögur
     + id bókara - auto
     + fylgiskjalsnúmer - auto
   - Yfirlit reiknings:
-    + sýnir allar færslur á reikning í röð eftir dagsetningu bókunar
+    + sýnir allar færslur á reikning í röð eftir dagsetningu færslu
 
 Stillingar
   - Reikningar fyrir eignir, skuldir, gjöld og tekjur

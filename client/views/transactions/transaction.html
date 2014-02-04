@@ -2,14 +2,14 @@
     {{#each recordsWithFirstFlag}}
         <tr>
             {{#if _first}}
-                <td rowspan={{recordsCount ../../records}}>{{../../transactionNumber}}</td>
-                <td rowspan={{recordsCount ../../records}}>{{../../registrationTime}}</td>
+                <td class="text-right" rowspan={{recordsCount ../../records}}>{{../../transactionNumber}}</td>
+                <td rowspan={{recordsCount ../../records}}>{{registrationTimeToText ../../registrationTime}}</td>
                 <td rowspan={{recordsCount ../../records}}>{{transactionDateToText ../../transactionDate}}</td>
                 <td rowspan={{recordsCount ../../records}}>{{../../description}}</td>
             {{/if}}
             <td>{{account}}</td>
-            <td>{{debit}}</td>
-            <td>{{kredit}}</td>
+            <td class="text-right">{{debit}}</td>
+            <td class="text-right">{{kredit}}</td>
             <td>{{description}}</td>
         </tr>
     {{/each}}

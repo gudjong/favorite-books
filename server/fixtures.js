@@ -1,7 +1,7 @@
 console.log(Transactions.findOne());
 if (Transactions.find().count() === 0) {
     Transactions.insert({
-        transactionNumber: 1,
+        transactionNumber: 2,
         registrationTime: new Date().getTime(),
         transactionDate: new Date(2014, 0, 30).getTime(),
         description: 'Millifærsla',
@@ -20,7 +20,7 @@ if (Transactions.find().count() === 0) {
     });
     Transactions.insert({
         transactionNumber: 1,
-        registrationTime: new Date().getTime(),
+        registrationTime: new Date().getTime() - 7 * 1000 * 60,
         transactionDate: new Date(2014, 1, 3).getTime(),
         description: 'Millifærsla',
         records: [
