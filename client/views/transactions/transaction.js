@@ -9,10 +9,6 @@ Template.transaction.helpers({
         return recordsWithFirstFlag;
     },
 
-    recordsCount: function(records) {
-        return records.length
-    },
-
     registrationTimeToText: function (registrationTime) {
         var t = new Date(registrationTime);
         return t.getDate() + '.' + (t.getMonth() + 1) + '.' + t.getFullYear() + ' ' +

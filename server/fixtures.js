@@ -1,4 +1,3 @@
-console.log(Transactions.findOne());
 if (Transactions.find().count() === 0) {
     Transactions.insert({
         transactionNumber: 2,

@@ -2,10 +2,10 @@
     {{#each recordsWithFirstFlag}}
         <tr>
             {{#if _first}}
-                <td class="text-right" rowspan={{recordsCount ../../records}}>{{../../transactionNumber}}</td>
-                <td rowspan={{recordsCount ../../records}}>{{registrationTimeToText ../../registrationTime}}</td>
-                <td rowspan={{recordsCount ../../records}}>{{transactionDateToText ../../transactionDate}}</td>
-                <td rowspan={{recordsCount ../../records}}>{{../../description}}</td>
+                <td class="text-right" rowspan={{../../records.length}}>{{../../transactionNumber}}</td>
+                <td rowspan={{../../records.length}}>{{registrationTimeToText ../../registrationTime}}</td>
+                <td rowspan={{../../records.length}}>{{transactionDateToText ../../transactionDate}}</td>
+                <td rowspan={{../../records.length}}>{{../../description}}</td>
             {{/if}}
             <td>{{account}}</td>
             <td class="text-right">{{debit}}</td>

@@ -1,5 +1,5 @@
 Template.transactionsList.helpers({
     transactions: function() {
-        return Transactions.find();
+        return Transactions.find({}, {sort: {registrationTime: -1}, reactive: true});
     }
 });
