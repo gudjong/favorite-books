@@ -1,14 +1,13 @@
 Template.transaction.helpers({
     registrationTimeToText: function (registrationTime) {
-        var t = new Date(registrationTime);
+        var time = moment(registrationTime);
 
-        return t.getDate() + '.' + (t.getMonth() + 1) + '.' + t.getFullYear() + ' ' +
-               t.getHours() + ':' + t.getMinutes() + ':' + t.getSeconds();
+        return time.format('YYYY.MM.DD HH:mm:ss');
     },
 
     transactionDateToText: function(transactionDate) {
-        var d = new Date(transactionDate);
+        var date = moment(transactionDate);
 
-        return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
+        return date.format('YYYY.MM.DD');
     }
 });
