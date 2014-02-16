@@ -1,7 +1,6 @@
 Template.transaction.helpers({
     registrationTimeToText: function (registrationTime) {
         var time = moment(registrationTime);
-
         return time.format('YYYY.MM.DD HH:mm:ss');
     },
 
