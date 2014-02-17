@@ -15,8 +15,6 @@
         var moment = jasmine.createSpy('moment').andReturn(mockMoment);
 
         beforeEach(function() {
-            format.reset();
-            moment.reset();
             window.moment = moment;
         });
 
@@ -25,14 +23,14 @@
             var someRegistrationTime = 999;
 
             // when
-            var formattedRegistrationTime = Template.transaction.registrationTimeToText(someRegistrationTime);
+            var actualFormattedRegistrationTime = Template.transaction.registrationTimeToText(someRegistrationTime);
 
             // then
             expect(moment.callCount).toBe(1);
             expect(moment).toHaveBeenCalledWith(someRegistrationTime);
             expect(format.callCount).toBe(1);
             expect(format).toHaveBeenCalledWith('YYYY.MM.DD HH:mm:ss');
-            expect(formattedRegistrationTime).toBe(expectedFormattedRegistrationTime);
+            expect(actualFormattedRegistrationTime).toBe(expectedFormattedRegistrationTime);
         });
 
     });
@@ -46,24 +44,22 @@
         var moment = jasmine.createSpy('moment').andReturn(mockMoment);
 
         beforeEach(function() {
-            format.reset();
-            moment.reset();
             window.moment = moment;
         });
 
-        it('formats registration time', function() {
+        it('formats transaction date', function() {
             // given
             var someTransactionDate = 111;
 
             // when
-            var formattedTransactionDate = Template.transaction.transactionDateToText(someTransactionDate);
+            var actualFormattedTransactionDate = Template.transaction.transactionDateToText(someTransactionDate);
 
             // then
             expect(moment.callCount).toBe(1);
             expect(moment).toHaveBeenCalledWith(someTransactionDate);
             expect(format.callCount).toBe(1);
             expect(format).toHaveBeenCalledWith('YYYY.MM.DD');
-            expect(formattedTransactionDate).toBe(expectedFormattedTransactionDate);
+            expect(actualFormattedTransactionDate).toBe(expectedFormattedTransactionDate);
         });
 
     });
