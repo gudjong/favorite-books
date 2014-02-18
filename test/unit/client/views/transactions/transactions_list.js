@@ -7,7 +7,7 @@
 
     describe('Template.transactionsList.transactions', function() {
 
-        // mock
+        // given
         var expectedTransactionsCollectionCursor = {};
 
         beforeEach(function() {
@@ -29,8 +29,65 @@
 
     describe('Template.transactionsList.transactionWithRecords', function() {
 
-        it('reactively sorts transactions in descending order', function() {
-            expect(false).toBe(true);
+        // given
+        var _id = 444;
+        var transactionNumber = 55;
+        var registrationTime = 999;
+        var transactionDate = 111;
+        var description = "Some description";
+        var recordDescription1 = "Record 1";
+        var recordDescription2 = "Record 2";
+
+        var expectedTransactionWithRecords = {
+            _id: _id,
+            transactionNumber: transactionNumber,
+            registrationTime: registrationTime,
+            transactionDate: transactionDate,
+            description: description,
+            records: [
+                {
+                    _first: true,
+                    description: recordDescription1
+                },
+                {
+                    description: recordDescription2
+                }
+            ]
+        };
+
+        var records = [
+            {
+                description: recordDescription1
+            },
+            {
+                description: recordDescription2
+            }
+        ];
+
+        var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
+        mockRecordsCollectionCursor.fetch.andReturn(records);
+
+        beforeEach(function() {
+            spyOn(Records, 'find').andReturn(mockRecordsCollectionCursor);
+        });
+
+        it('joins transaction with its records', function() {
+            // given
+            Template.transactionsList._id = _id;
+            Template.transactionsList.transactionNumber = transactionNumber;
+            Template.transactionsList.registrationTime = registrationTime;
+            Template.transactionsList.transactionDate = transactionDate;
+            Template.transactionsList.description = description;
+
+            // when
+            var actualTransactionWithRecords = Template.transactionsList.transactionWithRecords();
+
+            // then
+            expect(Records.find.callCount).toBe(1);
+            expect(Records.find).toHaveBeenCalledWith({transactionId: _id}, {sort: {account: 1}, reactive: true});
+            expect(mockRecordsCollectionCursor.fetch.callCount).toBe(1);
+            expect(mockRecordsCollectionCursor.fetch).toHaveBeenCalledWith();
+            expect(actualTransactionWithRecords).toEqual(expectedTransactionWithRecords);
         });
 
     });

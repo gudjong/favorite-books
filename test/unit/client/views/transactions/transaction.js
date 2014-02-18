@@ -8,7 +8,7 @@
 
     describe('Template.transaction.registrationTimeToText', function() {
 
-        // mock
+        // given
         var expectedFormattedRegistrationTime = '9999.99.99 99:99:99';
         var mockMoment = jasmine.createSpyObj('moment', ['format']);
         var format = mockMoment.format.andReturn(expectedFormattedRegistrationTime);
@@ -19,7 +19,6 @@
         });
 
         it('formats registration time', function() {
-            // given
             var someRegistrationTime = 999;
 
             // when
@@ -37,7 +36,7 @@
 
     describe('Template.transaction.transactionDateToText', function() {
 
-        // mock
+        // given
         var expectedFormattedTransactionDate = '9999.99.99';
         var mockMoment = jasmine.createSpyObj('moment', ['format']);
         var format = mockMoment.format.andReturn(expectedFormattedTransactionDate);
@@ -48,7 +47,6 @@
         });
 
         it('formats transaction date', function() {
-            // given
             var someTransactionDate = 111;
 
             // when
