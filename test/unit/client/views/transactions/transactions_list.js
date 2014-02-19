@@ -1,4 +1,5 @@
 (function () {
+
     "use strict";
 
     jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 20000;
@@ -13,7 +14,6 @@
         beforeEach(function() {
             spyOn(Transactions, 'find').andReturn(expectedTransactionsCollectionCursor);
         });
-
 
         it('reactively sorts transactions in descending order', function() {
             // when
@@ -55,7 +55,7 @@
             ]
         };
 
-        var records = [
+        var recordsForCurrentTransaction = [
             {
                 description: recordDescription1
             },
@@ -65,7 +65,7 @@
         ];
 
         var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
-        mockRecordsCollectionCursor.fetch.andReturn(records);
+        mockRecordsCollectionCursor.fetch.andReturn(recordsForCurrentTransaction);
 
         beforeEach(function() {
             spyOn(Records, 'find').andReturn(mockRecordsCollectionCursor);

@@ -10,12 +10,12 @@
 
         // given
         var expectedFormattedRegistrationTime = '9999.99.99 99:99:99';
-        var mockMoment = jasmine.createSpyObj('moment', ['format']);
-        var format = mockMoment.format.andReturn(expectedFormattedRegistrationTime);
-        var moment = jasmine.createSpy('moment').andReturn(mockMoment);
+        var mockMomentObject = jasmine.createSpyObj('moment', ['format']);
+        var mockFormat = mockMomentObject.format.andReturn(expectedFormattedRegistrationTime);
+        var mockMoment = jasmine.createSpy('moment').andReturn(mockMomentObject);
 
         beforeEach(function() {
-            window.moment = moment;
+            window.moment = mockMoment;
         });
 
         it('formats registration time', function() {
@@ -25,10 +25,10 @@
             var actualFormattedRegistrationTime = Template.transaction.registrationTimeToText(someRegistrationTime);
 
             // then
-            expect(moment.callCount).toBe(1);
-            expect(moment).toHaveBeenCalledWith(someRegistrationTime);
-            expect(format.callCount).toBe(1);
-            expect(format).toHaveBeenCalledWith('YYYY.MM.DD HH:mm:ss');
+            expect(mockMoment.callCount).toBe(1);
+            expect(mockMoment).toHaveBeenCalledWith(someRegistrationTime);
+            expect(mockFormat.callCount).toBe(1);
+            expect(mockFormat).toHaveBeenCalledWith('YYYY.MM.DD HH:mm:ss');
             expect(actualFormattedRegistrationTime).toBe(expectedFormattedRegistrationTime);
         });
 
@@ -38,12 +38,12 @@
 
         // given
         var expectedFormattedTransactionDate = '9999.99.99';
-        var mockMoment = jasmine.createSpyObj('moment', ['format']);
-        var format = mockMoment.format.andReturn(expectedFormattedTransactionDate);
-        var moment = jasmine.createSpy('moment').andReturn(mockMoment);
+        var mockMomentObject = jasmine.createSpyObj('moment', ['format']);
+        var mockFormat = mockMomentObject.format.andReturn(expectedFormattedTransactionDate);
+        var mockMoment = jasmine.createSpy('moment').andReturn(mockMomentObject);
 
         beforeEach(function() {
-            window.moment = moment;
+            window.moment = mockMoment;
         });
 
         it('formats transaction date', function() {
@@ -53,10 +53,10 @@
             var actualFormattedTransactionDate = Template.transaction.transactionDateToText(someTransactionDate);
 
             // then
-            expect(moment.callCount).toBe(1);
-            expect(moment).toHaveBeenCalledWith(someTransactionDate);
-            expect(format.callCount).toBe(1);
-            expect(format).toHaveBeenCalledWith('YYYY.MM.DD');
+            expect(mockMoment.callCount).toBe(1);
+            expect(mockMoment).toHaveBeenCalledWith(someTransactionDate);
+            expect(mockFormat.callCount).toBe(1);
+            expect(mockFormat).toHaveBeenCalledWith('YYYY.MM.DD');
             expect(actualFormattedTransactionDate).toBe(expectedFormattedTransactionDate);
         });
 
