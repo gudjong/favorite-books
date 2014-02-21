@@ -4,18 +4,24 @@
 
     jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 20000;
 
-    describe('Router.waitOn', function() {
+    // Capture Router.configure initialization.
+    function emptyFn() {
+        return undefined;
+    }
+
+    var routerWaitOn = emptyFn;
+
+    spyOn(Router, 'configure').andCallFake(function(config) {
+        expect(routerWaitOn).toBe(emptyFn);
+        expect(config).toBeDefined();
+        expect(config.waitOn).toBeDefined();
+        expect(typeof config.waitOn).toEqual('function');
+        routerWaitOn = config.waitOn;
+    });
+
+    describe('waitOn', function() {
 
         // given
-        var routerWaitOn = function() {
-            return undefined;
-        };
-        spyOn(Router, 'configure').andCallFake(function(config) {
-            if (config && config.waitOn && typeof config.waitOn === 'function') {
-                routerWaitOn = config.waitOn;
-            }
-        });
-
         var expectedTransactionsCollectionCursor = {};
         var expectedRecordsCollectionCursor = {};
 

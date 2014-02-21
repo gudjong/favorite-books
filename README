@@ -27,6 +27,7 @@ Sögur
     + fylgiskjalsnúmer - auto
   - Yfirlit reiknings:
     + sýnir allar færslur á reikning í röð eftir dagsetningu færslu
+  - Error template
 
 Stillingar
   - Reikningar fyrir eignir, skuldir, gjöld og tekjur
