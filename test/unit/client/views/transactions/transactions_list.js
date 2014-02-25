@@ -29,14 +29,29 @@
 
     describe('Template.transactionsList.transactionWithRecords', function() {
 
+        // mocking
+        var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
+
         // given
+        var recordDescription1 = "Record 1";
+        var recordDescription2 = "Record 2";
+
+        var recordsForCurrentTransaction = [
+            {
+                description: recordDescription1
+            },
+            {
+                description: recordDescription2
+            }
+        ];
+
+        mockRecordsCollectionCursor.fetch.andReturn(recordsForCurrentTransaction);
+
         var _id = 444;
         var transactionNumber = 55;
         var registrationTime = 999;
         var transactionDate = 111;
         var description = "Some description";
-        var recordDescription1 = "Record 1";
-        var recordDescription2 = "Record 2";
 
         var expectedTransactionWithRecords = {
             _id: _id,
@@ -55,30 +70,17 @@
             ]
         };
 
-        var recordsForCurrentTransaction = [
-            {
-                description: recordDescription1
-            },
-            {
-                description: recordDescription2
-            }
-        ];
-
-        var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
-        mockRecordsCollectionCursor.fetch.andReturn(recordsForCurrentTransaction);
-
         beforeEach(function() {
             spyOn(Records, 'find').andReturn(mockRecordsCollectionCursor);
-        });
 
-        it('joins transaction with its records', function() {
-            // given
             Template.transactionsList._id = _id;
             Template.transactionsList.transactionNumber = transactionNumber;
             Template.transactionsList.registrationTime = registrationTime;
             Template.transactionsList.transactionDate = transactionDate;
             Template.transactionsList.description = description;
+        });
 
+        it('joins transaction with its records', function() {
             // when
             var actualTransactionWithRecords = Template.transactionsList.transactionWithRecords();
 

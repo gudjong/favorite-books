@@ -46,7 +46,7 @@
 
     });
 
-    describe('Meteor.publish transactions', function() {
+    describe('Meteor.publish records', function() {
 
         // given
         var expectedRecordsCollectionCursor = {};
