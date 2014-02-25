@@ -3,12 +3,12 @@ Router.configure({
 
     loadingTemplate: 'loading',
 
-    waitOn: function() {
+    waitOn: function () {
         return [Meteor.subscribe('transactions'), Meteor.subscribe('records')];
     }
 });
 
-Router.map(function() {
+Router.map(function () {
     this.route('transactionsList', {
         path: '/'
     });

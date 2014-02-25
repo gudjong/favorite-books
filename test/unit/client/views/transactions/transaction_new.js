@@ -5,9 +5,9 @@
 
     Template.stub('transactionNew');
 
-    describe('Template.transactionNew.transaction', function() {
+    describe('Template.transactionNew.transaction', function () {
 
-        it('returns a new transaction', function() {
+        it('returns a new transaction', function () {
             expect(true).toBe(true);
         });
 

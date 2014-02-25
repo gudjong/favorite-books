@@ -1,16 +1,18 @@
 <template name="transaction">
     {{#each records}}
-        <tr id="transaction-row">
-            {{#if _first}}
-                <td id="transaction-number" class="text-right" rowspan={{../../records.length}}>{{../../transactionNumber}}</td>
-                <td id="registration-time" rowspan={{../../records.length}}>{{registrationTimeToText ../../registrationTime}}</td>
-                <td id="transaction-date" rowspan={{../../records.length}}>{{transactionDateToText ../../transactionDate}}</td>
-                <td id="transaction-description" rowspan={{../../records.length}}>{{../../description}}</td>
-            {{/if}}
-            <td id="account" >{{account}}</td>
-            <td id="debit" class="text-right">{{debit}}</td>
-            <td id="kredit" class="text-right">{{kredit}}</td>
-            <td id="description">{{description}}</td>
-        </tr>
+    <tr id="transaction-row">
+        {{#if _first}}
+        <td id="transaction-number" class="text-right" rowspan={{../../records.length}}>{{../../transactionNumber}}</td>
+        <td id="registration-time" rowspan={{../../records.length}}>
+            {{registrationTimeToText ../../registrationTime}}
+        </td>
+        <td id="transaction-date" rowspan={{../../records.length}}>{{transactionDateToText ../../transactionDate}}</td>
+        <td id="transaction-description" rowspan={{../../records.length}}>{{../../description}}</td>
+        {{/if}}
+        <td id="account">{{account}}</td>
+        <td id="debit" class="text-right">{{debit}}</td>
+        <td id="kredit" class="text-right">{{kredit}}</td>
+        <td id="description">{{description}}</td>
+    </tr>
     {{/each}}
 </template>

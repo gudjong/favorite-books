@@ -12,21 +12,21 @@
     var mockMoment = jasmine.createSpy('moment').andReturn(mockMomentObject);
     window.moment = mockMoment;
 
-    beforeEach(function() {
+    beforeEach(function () {
         mockFormat.reset();
         mockMoment.reset();
     });
 
-    describe('Template.transaction.registrationTimeToText', function() {
+    describe('Template.transaction.registrationTimeToText', function () {
 
         // given
         var expectedFormattedRegistrationTime = '9999.99.99 99:99:99';
 
-        beforeEach(function() {
+        beforeEach(function () {
             mockFormat.andReturn(expectedFormattedRegistrationTime);
         });
 
-        it('formats registration time', function() {
+        it('formats registration time', function () {
             var someRegistrationTime = 999;
 
             // when
@@ -42,16 +42,16 @@
 
     });
 
-    describe('Template.transaction.transactionDateToText', function() {
+    describe('Template.transaction.transactionDateToText', function () {
 
         // given
         var expectedFormattedTransactionDate = '9999.99.99';
 
-        beforeEach(function() {
+        beforeEach(function () {
             mockFormat.andReturn(expectedFormattedTransactionDate);
         });
 
-        it('formats transaction date', function() {
+        it('formats transaction date', function () {
             var someTransactionDate = 111;
 
             // when

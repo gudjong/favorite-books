@@ -6,16 +6,16 @@
 
     Template.stub('transactionsList');
 
-    describe('Template.transactionsList.transactions', function() {
+    describe('Template.transactionsList.transactions', function () {
 
         // given
         var expectedTransactionsCollectionCursor = {};
 
-        beforeEach(function() {
+        beforeEach(function () {
             spyOn(Transactions, 'find').andReturn(expectedTransactionsCollectionCursor);
         });
 
-        it('reactively sorts transactions in descending order', function() {
+        it('reactively sorts transactions in descending order', function () {
             // when
             var actualTransactionsCollectionCursor = Template.transactionsList.transactions();
 
@@ -27,7 +27,7 @@
 
     });
 
-    describe('Template.transactionsList.transactionWithRecords', function() {
+    describe('Template.transactionsList.transactionWithRecords', function () {
 
         // mocking
         var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
@@ -70,7 +70,7 @@
             ]
         };
 
-        beforeEach(function() {
+        beforeEach(function () {
             spyOn(Records, 'find').andReturn(mockRecordsCollectionCursor);
 
             Template.transactionsList._id = _id;
@@ -80,7 +80,7 @@
             Template.transactionsList.description = description;
         });
 
-        it('joins transaction with its records', function() {
+        it('joins transaction with its records', function () {
             // when
             var actualTransactionWithRecords = Template.transactionsList.transactionWithRecords();
 

@@ -10,7 +10,7 @@
         }
         connectHandlers.stack.splice(0, 0, {
             route: '/' + route,
-            handle: function(req, res) {
+            handle: function (req, res) {
                 res.writeHead(200, {'Content-Type': 'text/plain'});
                 handler(req, res);
                 res.end(route + ' complete');
@@ -69,7 +69,7 @@
         });
     }
 
-    Meteor.startup(function() {
+    Meteor.startup(function () {
         reset();
         createRoute('reset', reset);
         createRoute('setupTransactions', setupTransactions);

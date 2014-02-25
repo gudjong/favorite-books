@@ -4,8 +4,13 @@
             {{#if _first}}
                 <td rowspan={{recordsCount ../../records}}></td>
                 <td rowspan={{recordsCount ../../records}}></td>
-                <td rowspan={{recordsCount ../../records}}><input type="text" name="transactionDate" value="{{transactionDateToText transaction.transactionDate}}"/></td>
-                <td rowspan={{recordsCount ../../records}}><input type="text" name="description" value="{{transaction.description}}"/></td>
+                <td rowspan={{recordsCount ../../records}}>
+                    <input type="text" name="transactionDate"
+                           value="{{transactionDateToText transaction.transactionDate}}"/>
+                </td>
+                <td rowspan={{recordsCount ../../records}}>
+                    <input type="text" name="description" value="{{transaction.description}}"/>
+                </td>
             {{/if}}
             <td><input type="text" name="account" value="{{account}}"/></td>
             <td><input type="text" name="debit" value="{{debit}}"/></td>

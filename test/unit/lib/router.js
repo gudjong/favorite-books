@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     "use strict";
 
@@ -11,7 +11,7 @@
 
     var routerWaitOn = emptyFn;
 
-    spyOn(Router, 'configure').andCallFake(function(config) {
+    spyOn(Router, 'configure').andCallFake(function (config) {
         expect(routerWaitOn).toBe(emptyFn);
         expect(config).toBeDefined();
         expect(config.waitOn).toBeDefined();
@@ -19,7 +19,7 @@
         routerWaitOn = config.waitOn;
     });
 
-    describe('waitOn', function() {
+    describe('waitOn', function () {
 
         // given
         var expectedTransactionsCollectionCursor = {};
@@ -35,11 +35,11 @@
             return undefined;
         }
 
-        beforeEach(function() {
+        beforeEach(function () {
             spyOn(Meteor, 'subscribe').andCallFake(fakeSubscribe);
         });
 
-        it('subscribes to all transactions and records', function() {
+        it('subscribes to all transactions and records', function () {
             // when
             var actualCollectionCursors = routerWaitOn();
 

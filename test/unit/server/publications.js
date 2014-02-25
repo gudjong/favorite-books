@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     "use strict";
 
@@ -12,7 +12,7 @@
     var transactionsPublish = emptyFn;
     var recordsPublish = emptyFn;
 
-    spyOn(Meteor, 'publish').andCallFake(function(collectionName, callback) {
+    spyOn(Meteor, 'publish').andCallFake(function (collectionName, callback) {
         expect(['transactions', 'records']).toContain(collectionName);
         expect(callback).toBeDefined();
         expect(typeof callback).toEqual('function');
@@ -25,16 +25,16 @@
         }
     });
 
-    describe('Meteor.publish transactions', function() {
+    describe('Meteor.publish transactions', function () {
 
         // given
         var expectedTransactionsCollectionCursor = {};
 
-        beforeEach(function() {
+        beforeEach(function () {
             spyOn(Transactions, 'find').andReturn(expectedTransactionsCollectionCursor);
         });
 
-        it('publishes all transactions and records', function() {
+        it('publishes all transactions and records', function () {
             // when
             var actualTransactionsCollectionCursor = transactionsPublish();
 
@@ -46,16 +46,16 @@
 
     });
 
-    describe('Meteor.publish records', function() {
+    describe('Meteor.publish records', function () {
 
         // given
         var expectedRecordsCollectionCursor = {};
 
-        beforeEach(function() {
+        beforeEach(function () {
             spyOn(Records, 'find').andReturn(expectedRecordsCollectionCursor);
         });
 
-        it('publishes all transactions and records', function() {
+        it('publishes all transactions and records', function () {
             // when
             var actualRecordsCollectionCursor = recordsPublish();
 
