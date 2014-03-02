@@ -11,3 +11,6 @@ less
 bootstrap-3
 spin
 moment
+mongo-counter
+simple-schema
+collection2

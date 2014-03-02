@@ -5,9 +5,9 @@ Template.transactionsList.helpers({
 
     transactionWithRecords: function() {
         var records = Records.find({transactionId: this._id}, {sort: {account: 1}, reactive: true}).fetch();
-//        if (records.length === 0) {
-//            records.push({}); // guard against transactions with no records
-//        }
+        if (records.length === 0) {
+            records.push({}); // guard against transactions with no records
+        }
         records[0]._first = true;
 
         return {

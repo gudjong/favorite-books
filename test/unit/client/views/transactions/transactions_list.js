@@ -33,41 +33,20 @@
         var mockRecordsCollectionCursor = jasmine.createSpyObj('recordsCollectionCursor', ['fetch']);
 
         // given
-        var recordDescription1 = "Record 1";
-        var recordDescription2 = "Record 2";
-
-        var recordsForCurrentTransaction = [
-            {
-                description: recordDescription1
-            },
-            {
-                description: recordDescription2
-            }
-        ];
-
-        mockRecordsCollectionCursor.fetch.andReturn(recordsForCurrentTransaction);
-
         var _id = 444;
         var transactionNumber = 55;
         var registrationTime = 999;
         var transactionDate = 111;
         var description = "Some description";
+        var recordDescription1 = "Record 1";
+        var recordDescription2 = "Record 2";
 
         var expectedTransactionWithRecords = {
             _id: _id,
             transactionNumber: transactionNumber,
             registrationTime: registrationTime,
             transactionDate: transactionDate,
-            description: description,
-            records: [
-                {
-                    _first: true,
-                    description: recordDescription1
-                },
-                {
-                    description: recordDescription2
-                }
-            ]
+            description: description
         };
 
         beforeEach(function () {
@@ -81,6 +60,28 @@
         });
 
         it('joins transaction with its records', function () {
+            //given
+            var recordsForCurrentTransaction = [
+                {
+                    description: recordDescription1
+                },
+                {
+                    description: recordDescription2
+                }
+            ];
+
+            mockRecordsCollectionCursor.fetch.andReturn(recordsForCurrentTransaction);
+
+            expectedTransactionWithRecords.records = [
+                {
+                    _first: true,
+                    description: recordDescription1
+                },
+                {
+                    description: recordDescription2
+                }
+            ];
+
             // when
             var actualTransactionWithRecords = Template.transactionsList.transactionWithRecords();
 
@@ -89,6 +90,19 @@
             expect(Records.find).toHaveBeenCalledWith({transactionId: _id}, {sort: {account: 1}, reactive: true});
             expect(mockRecordsCollectionCursor.fetch.callCount).toBe(1);
             expect(mockRecordsCollectionCursor.fetch).toHaveBeenCalledWith();
+            expect(actualTransactionWithRecords).toEqual(expectedTransactionWithRecords);
+        });
+
+        it('handles transactions with no records', function () {
+            //given
+            mockRecordsCollectionCursor.fetch.andReturn([]);
+
+            expectedTransactionWithRecords.records = [{_first: true}];
+
+            // when
+            var actualTransactionWithRecords = Template.transactionsList.transactionWithRecords();
+
+            // then
             expect(actualTransactionWithRecords).toEqual(expectedTransactionWithRecords);
         });
 

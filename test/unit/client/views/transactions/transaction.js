@@ -9,10 +9,11 @@
     // mocking
     var mockMomentObject = jasmine.createSpyObj('moment', ['format']);
     var mockFormat = mockMomentObject.format;
-    var mockMoment = jasmine.createSpy('moment').andReturn(mockMomentObject);
-    window.moment = mockMoment;
+    var mockMoment;// = jasmine.createSpy('moment').andReturn(mockMomentObject);
 
     beforeEach(function () {
+        spyOn(jasmine.getGlobal(), 'moment').andReturn(mockMomentObject);
+        mockMoment = jasmine.getGlobal().moment;
         mockFormat.reset();
         mockMoment.reset();
     });
