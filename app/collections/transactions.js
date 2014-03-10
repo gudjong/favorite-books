@@ -1,37 +1,39 @@
-Transactions = new Meteor.Collection('transactions'
-//    , {
-//    schema: new SimpleSchema({
-//        transactionNumber: {
-//            type: Number,
-//            min: 0,
-//            denyUpdate: true,
-//            autoValue: function () {
-//                if (this.isInsert) {
-//                    return incrementCounter('transactionNumber');
-//                } else {
-//                    this.unset();
-//                }
-//            }
-//        },
-//        registrationTime: {
-//            type: Date,
-//            denyUpdate: true,
-//            autoValue: function () {
-//                if (this.isInsert) {
-//                    return new Date().getTime();
-//                } else {
-//                    this.unset();
-//                }
-//            }
-//        },
-//        transactionDate: {
-//            type: Date,
-//            denyUpdate: true
-//        },
-//        description: {
-//            type: String,
-//            denyUpdate: true
-//        }
-//    })
-//}
-);
+Meteor.Collection.__TransactionNumberAutoValue__ = function () {
+    if (this.isInsert) {
+        return incrementCounter('transactionNumber');
+    } else {
+        this.unset();
+    }
+};
+
+Meteor.Collection.__RegistrationTimeAutoValue__ = function () {
+    if (this.isInsert) {
+        return new Date();
+    } else {
+        this.unset();
+    }
+};
+
+Transactions = new Meteor.Collection('transactions', {
+    schema: new SimpleSchema({
+        transactionNumber: {
+            type: Number,
+            min: 0,
+            denyUpdate: true,
+            autoValue: Meteor.Collection.__TransactionNumberAutoValue__
+        },
+        registrationTime: {
+            type: Date,
+            denyUpdate: true,
+            autoValue: Meteor.Collection.__RegistrationTimeAutoValue__
+        },
+        transactionDate: {
+            type: Date,
+            denyUpdate: true
+        },
+        description: {
+            type: String,
+            denyUpdate: true
+        }
+    })
+});

@@ -4,28 +4,7 @@
 
     jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 20000;
 
-    // Capture Meteor.publish initialization.
-    function emptyFn() {
-        return undefined;
-    }
-
-    var transactionsPublish = emptyFn;
-    var recordsPublish = emptyFn;
-
-    spyOn(Meteor, 'publish').andCallFake(function (collectionName, callback) {
-        expect(['transactions', 'records']).toContain(collectionName);
-        expect(callback).toBeDefined();
-        expect(typeof callback).toEqual('function');
-        if (collectionName === 'transactions') {
-            expect(transactionsPublish).toBe(emptyFn);
-            transactionsPublish = callback;
-        } else if (collectionName === 'records') {
-            expect(recordsPublish).toBe(emptyFn);
-            recordsPublish = callback;
-        }
-    });
-
-    describe('Meteor.publish transactions', function () {
+    describe('Meteor.publish.__PublishTransactions__', function () {
 
         // given
         var expectedTransactionsCollectionCursor = {};
@@ -36,7 +15,7 @@
 
         it('publishes all transactions and records', function () {
             // when
-            var actualTransactionsCollectionCursor = transactionsPublish();
+            var actualTransactionsCollectionCursor = Meteor.publish.__PublishTransactions__();
 
             // then
             expect(Transactions.find.callCount).toBe(1);
@@ -46,7 +25,7 @@
 
     });
 
-    describe('Meteor.publish records', function () {
+    describe('Meteor.publish.__PublishRecords__', function () {
 
         // given
         var expectedRecordsCollectionCursor = {};
@@ -57,7 +36,7 @@
 
         it('publishes all transactions and records', function () {
             // when
-            var actualRecordsCollectionCursor = recordsPublish();
+            var actualRecordsCollectionCursor = Meteor.publish.__PublishRecords__();
 
             // then
             expect(Records.find.callCount).toBe(1);

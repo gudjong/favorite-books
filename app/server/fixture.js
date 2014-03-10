@@ -1,8 +1,8 @@
 if (Transactions.find().count() === 0) {
     var transactionId1 = Transactions.insert({
-        transactionNumber: incrementCounter('transactionNumber'),
-        registrationTime: new Date().getTime() - 7 * 1000 * 60,
-        transactionDate: new Date(2014, 1, 3).getTime(),
+//        transactionNumber: incrementCounter('transactionNumber'),
+//        registrationTime: new Date().getTime() - 7 * 1000 * 60,
+        transactionDate: new Date(2014, 1, 3),
         description: 'Millifærsla'
     });
     Records.insert({
@@ -24,9 +24,9 @@ if (Transactions.find().count() === 0) {
         description: 'Út af spranaðarreikningi'
     });
     var transactionId2 = Transactions.insert({
-        transactionNumber: incrementCounter('transactionNumber'),
-        registrationTime: new Date().getTime(),
-        transactionDate: new Date(2014, 0, 30).getTime(),
+//        transactionNumber: incrementCounter('transactionNumber'),
+//        registrationTime: new Date().getTime(),
+        transactionDate: new Date(2014, 0, 30),
         description: 'Millifærsla'
     });
     Records.insert({

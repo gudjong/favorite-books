@@ -4,22 +4,7 @@
 
     jasmine.DEFAULT_TIMEOUT_INTERVAL = jasmine.getEnv().defaultTimeoutInterval = 20000;
 
-    // Capture Router.configure initialization.
-    function emptyFn() {
-        return undefined;
-    }
-
-    var routerWaitOn = emptyFn;
-
-    spyOn(Router, 'configure').andCallFake(function (config) {
-        expect(routerWaitOn).toBe(emptyFn);
-        expect(config).toBeDefined();
-        expect(config.waitOn).toBeDefined();
-        expect(typeof config.waitOn).toEqual('function');
-        routerWaitOn = config.waitOn;
-    });
-
-    describe('waitOn', function () {
+    describe('Router.configure.__WaitOn__', function () {
 
         // given
         var expectedTransactionsCollectionCursor = {};
@@ -41,7 +26,7 @@
 
         it('subscribes to all transactions and records', function () {
             // when
-            var actualCollectionCursors = routerWaitOn();
+            var actualCollectionCursors = Router.configure.__WaitOn__();
 
             // then
             expect(Meteor.subscribe.callCount).toBe(2);

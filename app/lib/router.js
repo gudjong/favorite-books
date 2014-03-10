@@ -1,11 +1,13 @@
+Router.configure.__WaitOn__ = function () {
+    return [Meteor.subscribe('transactions'), Meteor.subscribe('records')];
+};
+
 Router.configure({
     layoutTemplate: 'layout',
 
     loadingTemplate: 'loading',
 
-    waitOn: function () {
-        return [Meteor.subscribe('transactions'), Meteor.subscribe('records')];
-    }
+    waitOn: Router.configure.__WaitOn__
 });
 
 Router.map(function () {

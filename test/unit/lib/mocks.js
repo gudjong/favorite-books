@@ -1,3 +1,6 @@
+// incrementCounter
+jasmine.getGlobal().incrementCounter = function () {};
+
 // moment
 jasmine.getGlobal().moment = function () {};
 

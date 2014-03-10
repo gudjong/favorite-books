@@ -5,16 +5,18 @@ Development on OS X Mavericks:
       Download and install package for OS X.
   - Install Meteorite
       $ sudo -H npm install -g meteorite
+  - Clone app
+      $ git clone git@github.com:gudjong/favorite-books.git
 
-Testing
+Testing:
   - http://xolvio.github.io/rtd/ for local real time end-to-end and unit tests
   - jasmine for unit tests
-  - Selenium webDriver / cucumber.js for end-to-end tests
+  - Selenium webDriver / cucumber.js? for end-to-end tests
 
-Deployment
+Deployment:
   - Meteor Up (mup) to keep track of multiple deployment environments
 
-Sögur
+Sögur:
   - Yfirlit bókaðra færslna:
     + sýnir allar færslur í röð eftir dagsetningu færslu
   - Bóka færslu:
@@ -29,5 +31,8 @@ Sögur
     + sýnir allar færslur á reikning í röð eftir dagsetningu færslu
   - Error template
 
-Stillingar
+Stillingar:
   - Reikningar fyrir eignir, skuldir, gjöld og tekjur
+
+Tækni:
+  - Nota audit-argument-checks til að tryggja rétt gildi í publish og methods
