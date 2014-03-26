@@ -3,10 +3,10 @@
     "iron-router": {},
     "bootstrap-3": {},
     "spin": {},
-    "autoform": {},
     "moment": {},
     "mongo-counter": {},
     "simple-schema": {},
-    "collection2": {}
+    "collection2": {},
+    "autoform": {}
   }
 }

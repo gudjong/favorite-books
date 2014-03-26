@@ -15,7 +15,7 @@ Meteor.Collection.__RegistrationTimeAutoValue__ = function () {
 };
 
 Transactions = new Meteor.Collection('transactions', {
-    schema: new SimpleSchema({
+    schema: {
         transactionNumber: {
             type: Number,
             min: 0,
@@ -35,5 +35,5 @@ Transactions = new Meteor.Collection('transactions', {
             type: String,
             denyUpdate: true
         }
-    })
+    }
 });

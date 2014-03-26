@@ -8,7 +8,7 @@
     describe('Template.transactionNew.transaction', function () {
 
         it('returns a new transaction', function () {
-            expect(true).toBe(true);
+            expect(true).toBe(false);
         });
 
     });

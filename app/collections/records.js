@@ -1,5 +1,5 @@
 Records = new Meteor.Collection('records', {
-    schema: new SimpleSchema({
+    schema: {
         transactionId: {
             type: String,
             denyUpdate: true
@@ -24,5 +24,5 @@ Records = new Meteor.Collection('records', {
             type: String,
             denyUpdate: true
         }
-    })
+    }
 });
