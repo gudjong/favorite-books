@@ -1,4 +1,5 @@
 @header-height: 30px;
+@title-size: 16px;
 
 *, *:before, *:after {
   -moz-box-sizing: border-box;
@@ -22,6 +23,10 @@
   //  background: lightgrey;
 }
 
+.title {
+  font-size: @title-size;
+}
+
 #header {
   background: darken(red, 10%);
   height: @header-height;
@@ -33,8 +38,8 @@
 
 #header-title {
   color: white;
-  font-size: 16px;
   padding: 3px 0 0 10px;
+  .title;
 }
 
 #content {

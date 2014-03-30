@@ -1,21 +1,23 @@
 <template name="transactionNew">
-    {{#each transaction.records}}
-        <tr>
-            {{#if _first}}
-                <td rowspan={{recordsCount ../../records}}></td>
-                <td rowspan={{recordsCount ../../records}}></td>
-                <td rowspan={{recordsCount ../../records}}>
-                    <input type="text" name="transactionDate"
-                           value="{{transactionDateToText transaction.transactionDate}}"/>
-                </td>
-                <td rowspan={{recordsCount ../../records}}>
-                    <input type="text" name="description" value="{{transaction.description}}"/>
-                </td>
-            {{/if}}
-            <td><input type="text" name="account" value="{{account}}"/></td>
-            <td><input type="text" name="debit" value="{{debit}}"/></td>
-            <td><input type="text" name="kredit" value="{{kredit}}"/></td>
-            <td><input type="text" name="description" value="{{description}}"/></td>
-        </tr>
-    {{/each}}
+    <div id="transaction-new">
+        {{#autoForm schema=transactionCollection}}
+        <fieldset>
+            <legend class="title">Ný færsla</legend>
+            <div class="form-group{{#if afFieldIsInvalid 'transactionDate'}} has-error{{/if}}">
+                {{afFieldLabel 'transactionDate'}}
+                {{afFieldInput 'transactionDate' value=today}}
+                {{#if afFieldIsInvalid 'transactionDate'}}
+                <span class="help-block">{{afFieldMessage 'transactionDate'}}</span>
+                {{/if}}
+            </div>
+            <div>
+                {{afFieldLabel 'description'}}
+                {{afFieldInput 'description'}}
+                {{#if afFieldIsInvalid 'description'}}
+                <span class="help-block">{{afFieldMessage 'description'}}</span>
+                {{/if}}
+            </div>
+        </fieldset>
+        {{/autoForm}}
+    </div>
 </template>
